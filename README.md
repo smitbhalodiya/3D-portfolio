@@ -3,7 +3,7 @@
 A futuristic, interactive portfolio built with **React**, **Three.js**, and **Tailwind CSS**. Features full-screen 3D starfield, mouse parallax, floating text, and smooth animations.
 
 ## ✨ Live Demo
-[View Portfolio](https://smitbhalodiya.github.io/portfolio)
+[View Portfolio](https://smitbhalodiya.vercel.app/)
 
 ## 🛠️ Tech Stack
 - **Frontend**: Vanilla JS + Three.js (for 3D)
