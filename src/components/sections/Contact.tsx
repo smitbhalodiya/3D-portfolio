@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Send, Mail, Linkedin, Github, MapPin, Phone } from 'lucide-react';
@@ -9,24 +10,43 @@ import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const ref = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    toast({
-      title: 'Message sent!',
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        {
+          publicKey: import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          toast({
+            title: 'Message sent!',
+            description: "Thank you for reaching out. I'll get back to you soon.",
+          });
+          setIsSubmitting(false);
+          formRef.current?.reset();
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          toast({
+            title: 'Error',
+            description: 'Failed to send message. Please try again.',
+            variant: 'destructive',
+          });
+          setIsSubmitting(false);
+        }
+      );
   };
 
   const contactInfo = [
@@ -93,7 +113,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl">
+            <form ref={formRef} onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl">
               <div className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
