@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage / About -->
+  <url>
+    <loc>https://smitbhalodiya.github.io/portfolio/</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://smitbhalodiya.github.io/portfolio/assets/images/my-profile.png</image:loc>
+      <image:title>Smit Bhalodiya - Frontend Developer</image:title>
+      <image:caption>Professional photo of Smit Bhalodiya, Frontend Developer</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Section -->
+  <url>
+    <loc>https://smitbhalodiya.github.io/portfolio/#about</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Resume Section -->
+  <url>
+    <loc>https://smitbhalodiya.github.io/portfolio/#resume</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Portfolio Section -->
+  <url>
+    <loc>https://smitbhalodiya.github.io/portfolio/#portfolio</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Blog Section -->
+  <url>
+    <loc>https://smitbhalodiya.github.io/portfolio/#blog</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contact Section -->
+  <url>
+    <loc>https://smitbhalodiya.github.io/portfolio/#contact</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
