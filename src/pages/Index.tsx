@@ -9,7 +9,25 @@ import Footer from '@/components/layout/Footer';
 
 import Meta from '@/components/seo/Meta';
 
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '');
+      const element = document.getElementById(elementId);
+      if (element) {
+        // Initial small timeout for layout settle (useful if using heavy 3D or animations)
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   return (
     <>
       <Meta
@@ -28,7 +46,10 @@ const Index = () => {
           <Navigation />
 
           {/* Sections */}
-          <Hero />
+          <section id="home">
+            <Hero />
+          </section>
+
           <About />
           <Projects />
           <Experience />

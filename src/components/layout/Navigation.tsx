@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/#about' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Experience', href: '/#experience' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Home', href: '/', type: 'route' },
+  { name: 'About', href: '/#about', type: 'hash' },
+  { name: 'Projects', href: '/#projects', type: 'hash' },
+  { name: 'Experience', href: '/#experience', type: 'hash' },
+  { name: 'Blog', href: '/blog', type: 'route' },
+  { name: 'Contact', href: '/#contact', type: 'hash' },
 ];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +26,34 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { name: string; href: string; type: string }) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    if (item.type === 'hash') {
+      // Navigate to the hash URL. 
+      // This updates the location.hash, triggering the useEffect in Index.tsx to scroll.
+      navigate(item.href);
+    } else {
+      // Standard route
+      navigate(item.href);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const isActive = (item: { name: string; href: string; type: string }) => {
+    // Home is only active if we are on the home path AND there is no hash
+    if (item.href === '/') {
+      return location.pathname === '/' && location.hash === '';
+    }
+    // Hash links are active if the path is home AND the hash matches
+    if (item.type === 'hash') {
+      return location.pathname === '/' && location.hash === item.href.replace('/', '');
+    }
+    // Other routes (like /blog)
+    return location.pathname.startsWith(item.href);
+  };
 
   return (
     <motion.header
@@ -34,7 +65,8 @@ const Navigation = () => {
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <motion.a
-          href="#home"
+          href="/"
+          onClick={(e) => { e.preventDefault(); navigate('/'); window.scrollTo(0, 0); }}
           className="font-heading text-xl font-bold text-gradient"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -53,10 +85,13 @@ const Navigation = () => {
             >
               <a
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
+                onClick={(e) => handleNavClick(e, item)}
+                className={`text-sm font-medium transition-colors duration-300 relative group ${isActive(item) ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                  }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive(item) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
               </a>
             </motion.li>
           ))}
@@ -92,8 +127,9 @@ const Navigation = () => {
                   >
                     <a
                       href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium text-foreground hover:text-primary transition-colors"
+                      onClick={(e) => handleNavClick(e, item)}
+                      className={`text-lg font-medium transition-colors ${isActive(item) ? 'text-primary' : 'text-foreground hover:text-primary'
+                        }`}
                     >
                       {item.name}
                     </a>
