@@ -1,50 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage / About -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
   <url>
     <loc>https://smitbhalodiya.vercel.app/</loc>
-    <lastmod>2025-12-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://smitbhalodiya.vercel.app/og-image.png</image:loc>
-      <image:title>Smit Bhalodiya - Frontend Developer</image:title>
-      <image:caption>Professional photo of Smit Bhalodiya, Frontend Developer</image:caption>
-    </image:image>
-  </url>
-  
-  <!-- About Section -->
-  <url>
-    <loc>https://smitbhalodiya.vercel.app/#about</loc>
-    <lastmod>2025-12-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Projects Section -->
-  <url>
-    <loc>https://smitbhalodiya.vercel.app/#projects</loc>
-    <lastmod>2025-12-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Experience Section -->
-  <url>
-    <loc>https://smitbhalodiya.vercel.app/#experience</loc>
-    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   
-  <!-- Contact Section -->
+  <!-- Blog Listing -->
   <url>
-    <loc>https://smitbhalodiya.vercel.app/#contact</loc>
-    <lastmod>2025-12-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://smitbhalodiya.vercel.app/blog</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://smitbhalodiya.vercel.app/blog/building-3d-portfolio</loc>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://smitbhalodiya.vercel.app/blog/optimizing-react-performance</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

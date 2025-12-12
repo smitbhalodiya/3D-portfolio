@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/#about' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Experience', href: '/#experience' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 const Navigation = () => {
@@ -28,9 +29,8 @@ const Navigation = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-card py-3' : 'py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-card py-3' : 'py-6'
+        }`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <motion.a

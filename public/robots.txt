@@ -1,18 +1,3 @@
 User-agent: *
 Allow: /
-
-# Sitemap
 Sitemap: https://smitbhalodiya.vercel.app/sitemap.xml
-
-# Crawl delay (optional, be respectful to search engines)
-Crawl-delay: 1
-
-# Popular search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
